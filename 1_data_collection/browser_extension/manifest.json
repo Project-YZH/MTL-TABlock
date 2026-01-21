@@ -1,0 +1,21 @@
+{
+    "name": "NetworkCallStackCapture",
+    "description": "Displays the live log with the http requests headers",
+    "version": "0.7",
+    "permissions": [
+      "debugger","tabs","webRequest","webRequestBlocking","contentSettings","*://*/*"
+    ],
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "content_scripts": [
+      {
+          "matches": ["*://*/*"],
+          "js": ["content.js"],
+          "all_frames": true,
+          "run_at": "document_start"
+      }
+  ],
+  "web_accessible_resources": ["inject.js", "breakpoint.json"],
+  "manifest_version": 2
+}
